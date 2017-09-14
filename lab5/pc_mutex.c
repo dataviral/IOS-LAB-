@@ -18,9 +18,10 @@ void* producer(void *arg)
 			counter += 1;
 			pthread_mutex_lock(&lock);
 			printf("\n (Prodcuer) Buffer Value :%d", counter);
-			for(i=0; i<(0x11111111);i++);
+			for(i=0; i<(0x10011111);i++);
 			// printf("\n Producer has finished:\nBuffer Value :%d", counter);
 			pthread_mutex_unlock(&lock);
+			for(i=0; i<(0x10011111);i++);
 		}
 	}
 	
@@ -39,10 +40,11 @@ void* consumer(void *arg)
 
 		pthread_mutex_lock(&lock);
 		counter -= 1;
-		printf("\n (Consumer) Buffer Value :%d", counter);
-		for(i=0; i<(0x11111111);i++);
+		printf("\n \t\t(Consumer) Buffer Value :%d", counter);
+		for(i=0; i<(0x10011111);i++);
 		// printf("\n Consumer has finished:\nBuffer Value :%d", counter);
 		pthread_mutex_unlock(&lock);
+	for(i=0; i<(0x10011111);i++);
 		}
 	}
 	
@@ -69,7 +71,7 @@ int main(void)
 	if(error != 0){
 		printf("\nThread can't be created :[%s]",strerror(error));
 	}
-
+	while(1);
 	pthread_mutex_destroy(&lock);
 	return 0;
 }
